@@ -53,15 +53,21 @@ function shuffle(a) {
     }
     return a;
 }
+var timeLeft= 10;
 function Countdown(){
     console.log("CountdownFired")
-    var timeLeft= 50;
     var timeInterval = setInterval(function () {
     timer.textContent=JSON.stringify(timeLeft);
     timeLeft--;
     if (timeLeft===-1){
         timer.textContent="0"
-        clearInterval(timeInterval);    
+        clearInterval(timeInterval);
+        console.log(timeLeft)
+        console.log("areWeFiring?")
+        question.textContent='Time is Up, Game Over'
+        option1.setAttribute("class","options invisible")
+        option2.setAttribute("class","options invisible")
+        option3.setAttribute("class","options invisible")    
     }
 },1000);
 }
@@ -84,10 +90,12 @@ function validateAnswer(event){
         console.log('you got this right');
         nextQuestion();
         RightorWrong.textContent="Correct!"
+        timeLeft+=5
     }else{
         console.log('You got this Wrong');
         nextQuestion();
         RightorWrong.textContent="Incorrect!"
+        timeLeft-=5
         }
 }
 
