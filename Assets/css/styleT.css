@@ -1,0 +1,24 @@
+h3{
+    display: inline-block;
+}
+#timer{
+    float: right;
+}
+h1{
+    text-align: center;
+}
+h4{
+    text-align: center;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#highScores a{
+    font-family: Arial, sans-serif;
+    color: blueviolet;
+    text-underline-offset: 0;
+    text-underline-position: unset;
+    text-decoration: none;
+}
