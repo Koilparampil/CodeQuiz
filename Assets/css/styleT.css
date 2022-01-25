@@ -10,6 +10,9 @@ h1{
 h4{
     text-align: center;
 }
+h2{
+    text-align: center;
+}
 .buttons{
     display: flex;
     justify-content: center;
@@ -39,3 +42,15 @@ h4{
     display: block;
     clear: both;
   }
+.RorW{
+    border: 1px solid #eceff1;
+    border-radius: 8px;
+    margin: 60px auto;
+    padding: 20px;
+    width: 60vw;
+    display: block;
+    text-align: center;
+}
+.invisible{
+    display: none;
+}
