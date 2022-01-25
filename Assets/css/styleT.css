@@ -54,3 +54,7 @@ h2{
 .invisible{
     display: none;
 }
+
+.input{
+text-align: center;
+}

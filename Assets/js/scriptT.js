@@ -5,7 +5,9 @@ var option2 =document.querySelector(".option2");
 var option3 =document.querySelector(".option3");
 var RightorWrong =document.querySelector("#CorIn");
 var timer =document.querySelector("#timeNumber");
-
+var scoreIs = document.querySelector('#scoreIs');
+var initInput = document.querySelector('.input');
+var submitBtn = document.querySelector('#Submit');
 
 const Question1={
     questionC:"What are variables used for in JavaScript?",
@@ -43,7 +45,7 @@ const Question5={
     CorrectO:1
 };
 var questionPool=[Question1,Question2,Question3,Question4,Question5];
-
+var highScores={};
 // from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381
 //Fisher-Yates Algorithm for shuffling array
 function shuffle(a) {
@@ -60,45 +62,58 @@ function Countdown(){
     timer.textContent=JSON.stringify(timeLeft);
     timeLeft--;
     if (timeLeft===-1){
-        timer.textContent="0"
+        timer.textContent="0";
         clearInterval(timeInterval);
-        console.log(timeLeft)
-        console.log("areWeFiring?")
-        question.textContent='Time is Up, Game Over'
-        option1.setAttribute("class","options invisible")
-        option2.setAttribute("class","options invisible")
-        option3.setAttribute("class","options invisible")    
+        console.log(timeLeft);
+        console.log("areWeFiring?");
+        question.textContent='Time is Up, Game Over';
+        option1.setAttribute("class","options invisible");
+        option2.setAttribute("class","options invisible");
+        option3.setAttribute("class","options invisible");
+        scoreIs.textContent="Your Final Score is: "+(timeLeft+1);
+        initInput.setAttribute('class',"input visible");
+        submitBtn.addEventListener('click',saveScore);
+    }
+    if(i>4){
+        clearInterval(timeInterval);
     }
 },1000);
 }
 function nextQuestion(){
-    if(i<4){
-        i++
-    question.textContent=questionPool[i].questionC
-    option1.textContent=questionPool[i].option1C
-    option2.textContent=questionPool[i].option2C
-    option3.textContent=questionPool[i].option3C
+    i++;
+    if(i<=4){
+    question.textContent=questionPool[i].questionC;
+    option1.textContent=questionPool[i].option1C;
+    option2.textContent=questionPool[i].option2C;
+    option3.textContent=questionPool[i].option3C;
         }else{
             question.textContent='Thats the End'
-            option1.setAttribute("class","options invisible")
-            option2.setAttribute("class","options invisible")
-            option3.setAttribute("class","options invisible")
+            option1.setAttribute("class","options invisible");
+            option2.setAttribute("class","options invisible");
+            option3.setAttribute("class","options invisible");
+            scoreIs.textContent="Your Final Score is: "+timeLeft;
+            initInput.setAttribute('class',"input visible");
+            submitBtn.addEventListener('click',saveScore);
         }
 }
 function validateAnswer(event){
     if(event.target.id==questionPool[i].CorrectO){
         console.log('you got this right');
+        timeLeft+=5
         nextQuestion();
         RightorWrong.textContent="Correct!"
-        timeLeft+=5
     }else{
         console.log('You got this Wrong');
+        timeLeft-=5
         nextQuestion();
         RightorWrong.textContent="Incorrect!"
-        timeLeft-=5
         }
 }
-
+function saveScore(){
+    var initials = document.getElementById("initials");
+    highScores[initials.value] = timeLeft+1;
+    
+}
 
 
 Countdown();
