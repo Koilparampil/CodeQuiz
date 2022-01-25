@@ -45,7 +45,7 @@ const Question5={
     CorrectO:1
 };
 var questionPool=[Question1,Question2,Question3,Question4,Question5];
-var highScores={};
+var highScores=JSON.parse(localStorage.getItem('highScores'));
 // from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381
 //Fisher-Yates Algorithm for shuffling array
 function shuffle(a) {
@@ -112,7 +112,8 @@ function validateAnswer(event){
 function saveScore(){
     var initials = document.getElementById("initials");
     highScores[initials.value] = timeLeft+1;
-    
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+    initials.value=""
 }
 
 
