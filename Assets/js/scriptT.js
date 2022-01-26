@@ -8,7 +8,6 @@ var timer =document.querySelector("#timeNumber");
 var scoreIs = document.querySelector('#scoreIs');
 var initInput = document.querySelector('.input');
 var submitBtn = document.querySelector('#Submit');
-
 const Question1={
     questionC:"What are variables used for in JavaScript?",
     option1C:'For Changing a value’s data type.',
@@ -46,6 +45,9 @@ const Question5={
 };
 var questionPool=[Question1,Question2,Question3,Question4,Question5];
 var highScores=JSON.parse(localStorage.getItem('highScores'));
+if (highScores===null){
+    highScores={}
+}
 // from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381
 //Fisher-Yates Algorithm for shuffling array
 function shuffle(a) {
@@ -55,7 +57,7 @@ function shuffle(a) {
     }
     return a;
 }
-var timeLeft= 10;
+var timeLeft= 50;
 function Countdown(){
     console.log("CountdownFired")
     var timeInterval = setInterval(function () {
@@ -114,6 +116,7 @@ function saveScore(){
     highScores[initials.value] = timeLeft+1;
     localStorage.setItem('highScores', JSON.stringify(highScores));
     initials.value=""
+    location.href='highScores.html'
 }
 
 

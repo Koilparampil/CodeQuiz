@@ -27,6 +27,7 @@ h4{
     display: inline-block;
     font-size: 20px;
     border-radius: 12px;
+    cursor: pointer;
 }
 #highScores a{
     font-family: Arial, sans-serif;

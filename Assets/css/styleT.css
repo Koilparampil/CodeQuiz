@@ -26,8 +26,8 @@ h2{
     text-decoration: none;
 }
 .card {
-    background-color:	#FFFFE0;
-    border: 1px solid #eceff1;
+    background-color:	#f4e0ff;
+    border: 1px solid #c9e2f3;
     border-radius: 8px;
     box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
       rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
@@ -58,6 +58,24 @@ h2{
 .input{
 text-align: center;
 }
-#Submit a{
+#Submit {
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+}
+.no-num{
+    list-style-type: none;
+}
+.answerBtn{
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    cursor: pointer;
 }
